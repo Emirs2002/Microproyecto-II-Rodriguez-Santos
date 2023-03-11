@@ -34,7 +34,7 @@ export function Navbar() {
             className="flex pl-2"
             onClick={handlewindow}
           >
-            <img className="h-12 inline mr-2" src="src\assets\images\User.png" />
+            <img className="h-12 inline mr-2" src="src\assets\images\Logo.png" />
             <p className="text-2xl font-heading font-bold text-[#FEF9EF] pt-1">Cartelera Caracas</p>
           </Link>
         </span>
