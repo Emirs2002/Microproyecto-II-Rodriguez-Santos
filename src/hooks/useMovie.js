@@ -6,14 +6,18 @@ import { fetchMovies } from "../utils/the-movie-db";
 export function useMovie() {
   //manejar las paginas de la api
   const [movies, setMovie] = useState([]);
+  const [isLoading, setLoading] = useState(false)
  
 
   const getMovies = async (page) => {
+    setLoading(true)
     const { data } = await fetchMovies(page);
     setMovie(data.results);
+    setLoading(false)
   };
   return {
     getMovies,
     movies,
+    isLoading
   };
 }
