@@ -13,10 +13,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
+        <Route path={REGISTER_PAGE} element={<RegisterPage />} />
+        <Route path={LOGIN_PAGE} element={<LoginPage />} />
         <Route element={<Layout />}>
           <Route path={HOME_PAGE} element={<HomePage />} />
-          <Route path={LOGIN_PAGE} element={<LoginPage />} />
-          <Route path={REGISTER_PAGE} element={<RegisterPage />} />
           <Route path={MOVIE_DETAIL} element={<MovieDetailPage/>}/>
           <Route path="*" element="404 NOT FOUND" />
         </Route>

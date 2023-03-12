@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card } from "../../components/Card/Card";
 import { useMovie } from "../../hooks/useMovie";
 import { useUpcomingMovies } from "../../hooks/useUpcomingMovies";
+import { Button1, Button2, Button3 } from "../../components/Button/Button";
 
 export function HomePage() {
   //controlar el tipo de peliculas para indicar que funcion usar
@@ -38,7 +39,7 @@ export function HomePage() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center mb-4">
       
       {isLoadingUpcoming &&  <h1 className="text-3xl font-bold mt-20">Cargando películas...</h1>}
 
@@ -46,14 +47,13 @@ export function HomePage() {
       
       {!isLoading && !isLoadingUpcoming && 
       <>
-      <h1 className="font-bold text-xl md:text-3xl mt-10">NUESTRA CARTELERA</h1>
-      <button
-        type="button"
+      <h1 className="font-bold text-xl md:text-3xl mt-10 mb-5 ">NUESTRA CARTELERA</h1>
+      <Button1
+        disabled={false}
         onClick={handleMovieType}
-        className="h-10 bg-[#FE6D73] px-5 rounded-md my-5"
       >
         {type ? "Ver estrenadas" : "Ver próximos estrenos"}
-      </button>
+      </Button1>
       <div
         id="container"
         className="grid grid-cols-1 mx-2 md:grid-cols-3 md:justify-between md:w-3/4"
@@ -70,22 +70,20 @@ export function HomePage() {
 
       <div className="flex ">
         {page > 1 && (
-          <button
-            type="button"
+          <Button1
+            disabled={false}
             onClick={handlePrior}
-            className="h-10 bg-[#FE6D73] px-5 rounded-md my-5"
           >
             Página anterior
-          </button>
+          </Button1>
         )}
-
-        <button
-          type="button"
+        
+        <Button1
+          disabled={false}
           onClick={handleNext}
-          className="h-10 bg-[#FE6D73] px-5 rounded-md my-5 ml-5"
         >
           Siguiente página
-        </button>
+        </Button1>
       </div>
       </>}
     </div>

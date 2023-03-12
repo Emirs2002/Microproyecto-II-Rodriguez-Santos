@@ -1,5 +1,6 @@
 import { signInWithPopup, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
 import { auth, googleProvider } from "./config"
+import { createUserProfile } from "./users-service";
 
 export const signInWithGoogle = async () => {
     try {
@@ -7,18 +8,26 @@ export const signInWithGoogle = async () => {
         console.log(result)
     } catch (error) {
         console.error(error);
+        alert('No se pudo crear la cuenta, intentalo otra vez.')
+        navigate('/')
     }
 };
 
-export const registerInWithInfo = async (nombre, apellido, correo, password, telefono) => {
+export const registerInWithEmailAndPassword = async ( email, password, extraData) => {
     try {
-        await signInWithEmailAndPassword()
+        const result = await createUserWithEmailAndPassword(auth, email, password)
+        console.log(result)
+        await createUserProfile(result.user.uid, {
+            email, ...extraData
+        })
     } catch (error) {
-        
+        console.log(error)
+        alert('No se pudo crear la cuenta, intentalo otra vez.')
+        navigate('/')
     }
 };
 
-export const signInWithInfo = async () => {};
+{/*export const signInWithEmailAndPassword = async () => {};*/}
 
 export const logout = async () => {
     try {

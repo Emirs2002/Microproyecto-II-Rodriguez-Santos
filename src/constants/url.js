@@ -1,4 +1,4 @@
-export const HOME_PAGE = "/"
-export const REGISTER_PAGE = '/register'
+export const HOME_PAGE = "/homepage"
+export const REGISTER_PAGE = '/'
 export const LOGIN_PAGE = '/login'
 export const MOVIE_DETAIL = "/movie"
