@@ -8,12 +8,13 @@ export function HomePage() {
   let [type, setType] = useState(false);
   let [page, setPage] = useState(1);
   //usar peliculas a estrenar
-  const { getUpcomingMovies, UpcomingMovies} = useUpcomingMovies()
+  const { getUpcomingMovies, UpcomingMovies, isLoadingUpcoming} = useUpcomingMovies()
   //usar peliculas estrenadas
-  const { getMovies, movies } = useMovie();
+  const { getMovies, movies, isLoading } = useMovie();
 
   useEffect(() => {
     (!type ? getMovies():getUpcomingMovies());
+    
   }, []);
 
   {
@@ -38,6 +39,13 @@ export function HomePage() {
 
   return (
     <div className="flex flex-col justify-center items-center">
+      
+      {isLoadingUpcoming &&  <h1 className="text-3xl font-bold mt-20">Cargando películas...</h1>}
+
+      {isLoading && <h1 className="text-3xl font-bold mt-20">Cargando películas...</h1>}
+      
+      {!isLoading && !isLoadingUpcoming && 
+      <>
       <h1 className="font-bold text-xl md:text-3xl mt-10">NUESTRA CARTELERA</h1>
       <button
         type="button"
@@ -79,6 +87,7 @@ export function HomePage() {
           Siguiente página
         </button>
       </div>
+      </>}
     </div>
   );
 }
