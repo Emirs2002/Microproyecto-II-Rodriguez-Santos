@@ -40,8 +40,10 @@ export function HomePage() {
   return (
     <div className="flex flex-col justify-center items-center">
       
-      {isLoadingUpcoming && isLoading && <h1 className="text-3xl font-bold mt-20">Cargando películas...</h1>}
+      {isLoadingUpcoming &&  <h1 className="text-3xl font-bold mt-20">Cargando películas...</h1>}
 
+      {isLoading && <h1 className="text-3xl font-bold mt-20">Cargando películas...</h1>}
+      
       {!isLoading && !isLoadingUpcoming && 
       <>
       <h1 className="font-bold text-xl md:text-3xl mt-10">NUESTRA CARTELERA</h1>
