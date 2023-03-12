@@ -17,7 +17,7 @@ export const registerInWithEmailAndPassword = async ( email, password, extraData
         console.log(result)
         await createUserProfile(result.user.uid, {
             email, ...extraData
-        } )
+        })
     } catch (error) {
         console.log(error)
     }

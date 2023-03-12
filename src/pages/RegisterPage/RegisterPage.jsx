@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LOGIN_PAGE } from '../../constants/url';
 import { Button1 } from '../../components/Button/Button';
 import { Button2 } from '../../components/Button/Button';
 import { registerInWithEmailAndPassword, signInWithGoogle } from "../../firebase/auth-service"
 
 export function RegisterPage() {
-
+  const navigate =  useNavigate()
   const [formData, setFormData] = useState({
     name: '',
     lastname: '',
@@ -32,6 +32,7 @@ export function RegisterPage() {
     const {email, password, ...extraData} = formData
     await registerInWithEmailAndPassword(email, password, extraData)
     console.log(formData)
+    navigate('/homepage')
   }
 
   return (
@@ -57,6 +58,40 @@ export function RegisterPage() {
                   name="username"
                   className="block pl-2 w-full mt-1 rounded-md shadow-sm text-s border-2 border-solid border-gray-300 "
                   placeholder='Escriba su nombre...'
+                  onChange={handleOnChange}
+                />
+              </div>
+            </div>
+            <div className="mt-4">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700 undefined"
+              >
+                Nombre
+              </label>
+              <div className="flex flex-col items-start">
+                <input
+                  type="name"
+                  name="name"
+                  className="block w-full mt-1 rounded-md shadow-sm border-2 border-solid border-gray-300 pl-2"
+                  placeholder='Escriba su nombre...'
+                  onChange={handleOnChange}
+                />
+              </div>
+            </div>
+            <div className="mt-4">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700 undefined"
+              >
+                Apellido
+              </label>
+              <div className="flex flex-col items-start">
+                <input
+                  type="name"
+                  name="lastname"
+                  className="block w-full mt-1 rounded-md shadow-sm border-2 border-solid border-gray-300 pl-2"
+                  placeholder='Escriba su apellido...'
                   onChange={handleOnChange}
                 />
               </div>
@@ -111,7 +146,7 @@ export function RegisterPage() {
             <hr className="w-full" /> {/*Esta es la barrita*/}
           </div>
           <div className="my-6 space-y-2">
-            <Button2 disabled={false}>Inicia sesión con Google</Button2>
+            <Button2 disabled={false} onClick={handleSigninWithGoogle}>Inicia sesión con Google</Button2>
           </div>
         </div>
       </div>

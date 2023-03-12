@@ -1,7 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { REGISTER_PAGE, LOGIN_PAGE } from "../../constants/url";
+import { useUser } from "../../contexts/UserContext";
+import { Button2, Button1 } from "../Button/Button";
+import { logout } from "../../firebase/auth-service";
 
 export function Navbar() {
+  const { user } = useUser()
+
+  const handleLogout = async () => {
+    await logout(() => navigate(REGISTER_PAGE));
+  };
+
+
   //Cambiar el icono del menu y activar el menu responsive
   const menu = (event) => {
     let list = document.querySelector("ul");
@@ -62,12 +73,25 @@ export function Navbar() {
             Cartelera
           </Link>
         </li>
-        <span className="hover:text-[#ffcb77] font-semibold mx-4 text-xl flex items-center cursor-pointer">
-          <Link  className="pr-2" onClick={handlewindow}>
-            Nombre Usuario
+
+        {!!user && (<><span className="hover:text-[#ffcb77] font-semibold mx-4 text-xl flex items-center cursor-pointer">
+          <Link className="pr-2" onClick={handlewindow}>
+            {user.username}
           </Link>
           <img className="h-10 inline" src="src\assets\images\User.png" />
         </span>
+          <span>
+            <Button2 disabled={false} onClick={handleLogout}>
+              Salir
+            </Button2>
+          </span>
+        </>)}
+
+        {!user && (<Button2 disabled={false} >
+          <Link to={LOGIN_PAGE} className="pr-2" onClick={handlewindow}>
+            Iniciar Sesión
+          </Link>
+        </Button2>)}
       </ul>
     </nav>
   );
