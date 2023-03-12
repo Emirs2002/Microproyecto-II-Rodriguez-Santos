@@ -2,7 +2,7 @@ import React from "react";
 
 export function Card({movie}) {
   return (
-    <div class="grid grid-cols-2 md:grid-cols-1 md:justify-center md:items-center md:h-80 h-40 p-2 mt-10 md:w-64 w-full container mx-auto bg-[#226c87] rounded-xl shadow-md mb-5">
+    <div className="grid grid-cols-2 md:grid-cols-1 md:justify-center md:items-center md:h-80 h-40 p-2 mt-10 md:w-64 w-full container mx-auto bg-[#226c87] rounded-xl shadow-md mb-5">
       <div className=" md:flex md:justify-center">
         <img
           className="md:w-44 w-36"
