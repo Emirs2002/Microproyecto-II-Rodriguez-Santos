@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "../../components/Card/Card";
-import { fetchMovies } from "../../utils/the-movie-db";
+import { useMovie } from "../../hooks/useMovie";
 
 
 export function HomePage() {
-  const [movies, setMovie] = useState([]);
-  let [page, setPage] = useState(1);
+  
+  const { getMovies, movies } = useMovie()
+  let { page, setPage } = useMovie()
 
-  const getMovies = async () => {
-    const { data } = await fetchMovies(page);
-    setMovie(data.results);
-  };
   useEffect(() => {
     getMovies();
   }, []);
 
+  {/* Controlar los botones de pagina anterior y pagina siguiente*/}
   const handleNext = () => {
     setPage(page+=1);
-    getMovies()
-    console.log(page)
+    getMovies(page)
     
   };
+
+  const handlePrior = () => {
+    setPage(page-=1);
+    getMovies(page)
+  }
 
   return (
     <div className="flex flex-col justify-center items-center">
@@ -30,15 +32,26 @@ export function HomePage() {
           return <Card movie={movie} key={idx} />;
         })}
       </div>
-
-      <button
-        type="button"
-        onClick={handleNext}
-        className="h-10 bg-[#FE6D73] px-5 rounded-md my-5"
-      >
-        Siguiente página
-      </button>
       
+      <div className="flex ">
+      {page > 1 && <button
+          type="button"
+          onClick={handlePrior}
+          className="h-10 bg-[#FE6D73] px-5 rounded-md my-5"
+        >
+          Página anterior
+        </button>}
+
+        <button
+          type="button"
+          onClick={handleNext}
+          className="h-10 bg-[#FE6D73] px-5 rounded-md my-5 ml-5"
+        >
+          Siguiente página
+        </button>
+
+        
+      </div>
     </div>
   );
 }

@@ -1,13 +1,19 @@
-import { useState } from "react"
-import { fetchMovies } from "../utils/the-movie-db"
+import { useState } from "react";
+import { fetchMovies } from "../utils/the-movie-db";
 
-export function useMovie(){
-    
-    const [movie, setMovie] = useState([])    
-    
-    const getMovies = async () => {
-        const { data } = await fetchMovies()
-        console.log(data)
-    }
-    return {}
+//Tomar las peliculas de la api
+export function useMovie() {
+  const [movies, setMovie] = useState([]);
+  let [page, setPage] = useState(1); //manejar las paginas de la api
+
+  const getMovies = async (page) => {
+    const { data } = await fetchMovies(page);
+    setMovie(data.results);
+  };
+  return {
+    getMovies,
+    page,
+    setPage,
+    movies,
+  };
 }
