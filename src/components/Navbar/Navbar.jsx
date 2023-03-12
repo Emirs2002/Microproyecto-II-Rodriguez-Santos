@@ -27,7 +27,7 @@ export function Navbar() {
   };
 
   return (
-    <nav className="p-5 bg-[#227c9d] md:flex md:items-center md:justify-between">
+    <nav className="p-5 bg-[#108c80] md:flex md:items-center md:justify-between">
       <div className="flex justify-between items-center">
         <span className="cursor-pointer">
           <Link
@@ -50,7 +50,7 @@ export function Navbar() {
 
       <ul
         className="text-[#FEF9EF] md:flex md:items-center md:z-auto md:static absolute
-       bg-[#227c9d] w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl7
+       bg-[#108c80] w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl7
        md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-400"
       >
         <li className=" font-semibold hover:text-[#ffcb77] mx-4  my-6 md:my-0 ">
