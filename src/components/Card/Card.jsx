@@ -6,7 +6,7 @@ export function Card({movie}) {
       <div className=" md:flex md:justify-center">
         <img
           className="md:w-44 w-36"
-          src={movie.poster_path}
+          src={movie.poster_path === null ? "src/assets/images/no_poster_img.png" : movie.poster_path}
           alt={movie.title}
         />
       </div>
