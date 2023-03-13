@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { REGISTER_PAGE, LOGIN_PAGE } from "../../constants/url";
+import { REGISTER_PAGE, LOGIN_PAGE, NOTUSER_PAGE } from "../../constants/url";
 import { useUser } from "../../contexts/UserContext";
 import { Button2, Button3 } from "../Button/Button";
 import { logout } from "../../firebase/auth-service";
@@ -64,19 +64,18 @@ export function Navbar() {
        bg-[#108c80] w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl7
        md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-400"
       >
+        
+
+        {!!user && (<><span className="hover:text-[#ffcb77] font-semibold mx-4 text-xl flex items-center cursor-pointer">
         <li className=" font-semibold hover:text-[#ffcb77] mx-4  my-6 md:my-0 ">
           <Link className="text-xl">Buscador</Link>
         </li>
-
-        {!!user && (<><span className="hover:text-[#ffcb77] font-semibold mx-4 text-xl flex items-center cursor-pointer">
-          <Link className="pr-2" onClick={handlewindow}>
             {user.username}
-          </Link>
           <img className="h-10 inline" src="src\assets\images\User.png" />
         </span>
           <span>
             <Button3 disabled={false} onClick={handleLogout} >
-              Salir
+              <Link to={NOTUSER_PAGE}>Salir</Link>
             </Button3>
           </span>
         </>)}

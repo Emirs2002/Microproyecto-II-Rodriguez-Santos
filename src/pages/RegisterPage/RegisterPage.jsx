@@ -16,6 +16,7 @@ export function RegisterPage() {
 
   const handleSigninWithGoogle = async () => {
     await signInWithGoogle()
+    navigate('/homepage')
   }
 
 

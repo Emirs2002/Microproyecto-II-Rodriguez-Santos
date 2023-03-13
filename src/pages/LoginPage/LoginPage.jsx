@@ -15,6 +15,7 @@ export function LoginPage() {
 
   const handleSigninWithGoogle = async () => {
     await signInWithGoogle()
+    navigate('/homepage')
   }
 
 
