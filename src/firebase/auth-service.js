@@ -1,4 +1,4 @@
-import { signInWithPopup, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
+import { signInWithPopup, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, confirmPasswordReset } from "firebase/auth"
 import { auth, googleProvider } from "./config"
 import { createUserProfile } from "./users-service";
 
@@ -14,6 +14,7 @@ export const signInWithGoogle = async () => {
 };
 
 export const registerInWithEmailAndPassword = async ( email, password, extraData) => {
+    
     try {
         const result = await createUserWithEmailAndPassword(auth, email, password)
         console.log(result)
@@ -27,7 +28,15 @@ export const registerInWithEmailAndPassword = async ( email, password, extraData
     }
 };
 
-{/*export const signInWithEmailAndPassword = async () => {};*/}
+export const logInWithEmailAndPassword = async (email, password) => {
+    try {
+    const result = await signInWithEmailAndPassword(auth, email, password)
+    } catch {
+        alert('No se pudo iniciar sesion, intentalo otra vez.')
+        navigate('/login')
+    }
+
+};
 
 export const logout = async () => {
     try {
