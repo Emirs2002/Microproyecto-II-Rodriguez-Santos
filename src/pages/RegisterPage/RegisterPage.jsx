@@ -39,7 +39,7 @@ export function RegisterPage() {
 
 return (
   <div>
-    <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
+    <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-[#c6f8f3]">
       <div>
         <h3 className="text-4xl font-bold text-[#FE6D73]">
           ¡Regístrate!

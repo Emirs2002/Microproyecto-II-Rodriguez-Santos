@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { REGISTER_PAGE, LOGIN_PAGE } from "../../constants/url";
 import { useUser } from "../../contexts/UserContext";
-import { Button2, Button1 } from "../Button/Button";
+import { Button2, Button3 } from "../Button/Button";
 import { logout } from "../../firebase/auth-service";
 
 export function Navbar() {
@@ -68,12 +68,6 @@ export function Navbar() {
           <Link className="text-xl">Buscador</Link>
         </li>
 
-        <li className="font-semibold hover:text-[#ffcb77] mx-4 my-6 md:my-0">
-          <Link className="text-xl" onClick={handlewindow}>
-            Cartelera
-          </Link>
-        </li>
-
         {!!user && (<><span className="hover:text-[#ffcb77] font-semibold mx-4 text-xl flex items-center cursor-pointer">
           <Link className="pr-2" onClick={handlewindow}>
             {user.username}
@@ -81,17 +75,17 @@ export function Navbar() {
           <img className="h-10 inline" src="src\assets\images\User.png" />
         </span>
           <span>
-            <Button2 disabled={false} onClick={handleLogout}>
+            <Button3 disabled={false} onClick={handleLogout} >
               Salir
-            </Button2>
+            </Button3>
           </span>
         </>)}
 
-        {!user && (<Button2 disabled={false} >
+        {!user && (<Button3 disabled={false} >
           <Link to={LOGIN_PAGE} className="pr-2" onClick={handlewindow}>
             Iniciar Sesión
           </Link>
-        </Button2>)}
+        </Button3>)}
       </ul>
     </nav>
   );
