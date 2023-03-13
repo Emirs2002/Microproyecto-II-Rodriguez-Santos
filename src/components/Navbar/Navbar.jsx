@@ -9,7 +9,7 @@ export function Navbar() {
   const { user } = useUser()
 
   const handleLogout = async () => {
-    await logout(() => navigate(REGISTER_PAGE));
+    await logout(() => navigate({NOTUSER_PAGE}));
   };
 
 
@@ -75,7 +75,7 @@ export function Navbar() {
         </span>
           <span>
             <Button3 disabled={false} onClick={handleLogout} >
-              <Link to={NOTUSER_PAGE}>Salir</Link>
+             Salir
             </Button3>
           </span>
         </>)}

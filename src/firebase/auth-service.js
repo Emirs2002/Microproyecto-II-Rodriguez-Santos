@@ -9,12 +9,11 @@ export const signInWithGoogle = async () => {
     } catch (error) {
         console.error(error);
         alert('No se pudo crear la cuenta, intentalo otra vez.')
-        navigate('/')
+        
     }
 };
 
 export const registerInWithEmailAndPassword = async ( email, password, extraData) => {
-    
     try {
         const result = await createUserWithEmailAndPassword(auth, email, password)
         console.log(result)
@@ -24,7 +23,6 @@ export const registerInWithEmailAndPassword = async ( email, password, extraData
     } catch (error) {
         console.log(error)
         alert('No se pudo crear la cuenta, intentalo otra vez.')
-        navigate('/')
     }
 };
 
@@ -33,7 +31,6 @@ export const logInWithEmailAndPassword = async (email, password) => {
     const result = await signInWithEmailAndPassword(auth, email, password)
     } catch {
         alert('No se pudo iniciar sesion, intentalo otra vez.')
-        navigate('/login')
     }
 
 };
