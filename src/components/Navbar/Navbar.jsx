@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { REGISTER_PAGE, LOGIN_PAGE, NOTUSER_PAGE } from "../../constants/url";
+import { REGISTER_PAGE, LOGIN_PAGE, NOTUSER_PAGE , HOME_PAGE} from "../../constants/url";
 import { useUser } from "../../contexts/UserContext";
 import { Button2, Button3 } from "../Button/Button";
 import { logout } from "../../firebase/auth-service";
