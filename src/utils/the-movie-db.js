@@ -12,3 +12,9 @@ export async function fetchUpcomingMovies(page) {
   );
 
 }
+
+export async function fetchMovieDetails(movie_id){
+  return axios.get(
+    `https://api.themoviedb.org/3/movie/${movie_id}?api_key=9f1212063dfef6c418d0a5e248e05c78`
+  )
+}

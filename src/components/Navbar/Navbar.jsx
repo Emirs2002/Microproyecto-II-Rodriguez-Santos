@@ -1,17 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { REGISTER_PAGE, LOGIN_PAGE } from "../../constants/url";
+import { REGISTER_PAGE, LOGIN_PAGE, HOME_PAGE } from "../../constants/url";
 import { useUser } from "../../contexts/UserContext";
 import { Button2, Button3 } from "../Button/Button";
 import { logout } from "../../firebase/auth-service";
 
 export function Navbar() {
-  const { user } = useUser()
+  const { user } = useUser();
 
   const handleLogout = async () => {
     await logout(() => navigate(REGISTER_PAGE));
   };
-
 
   //Cambiar el icono del menu y activar el menu responsive
   const menu = (event) => {
@@ -41,12 +40,14 @@ export function Navbar() {
     <nav className="p-5 bg-[#108c80] md:flex md:items-center md:justify-between">
       <div className="flex justify-between items-center">
         <span className="cursor-pointer">
-          <Link
-            className="flex pl-2"
-            onClick={handlewindow}
-          >
-            <img className="h-12 inline mr-2" src="src\assets\images\Logo.png" />
-            <p className="text-2xl font-heading font-bold text-[#FEF9EF] pt-1">Cartelera Caracas</p>
+          <Link to={HOME_PAGE} className="flex pl-2" onClick={handlewindow}>
+            <img
+              className="h-12 inline mr-2"
+              src="src\assets\images\Logo.png"
+            />
+            <p className="text-2xl font-heading font-bold text-[#FEF9EF] pt-1">
+              Cartelera Caracas
+            </p>
           </Link>
         </span>
         <span className="cursor-pointer md:hidden block">
@@ -68,24 +69,29 @@ export function Navbar() {
           <Link className="text-xl">Buscador</Link>
         </li>
 
-        {!!user && (<><span className="hover:text-[#ffcb77] font-semibold mx-4 text-xl flex items-center cursor-pointer">
-          <Link className="pr-2" onClick={handlewindow}>
-            {user.username}
-          </Link>
-          <img className="h-10 inline" src="src\assets\images\User.png" />
-        </span>
-          <span>
-            <Button3 disabled={false} onClick={handleLogout} >
-              Salir
-            </Button3>
-          </span>
-        </>)}
+        {!!user && (
+          <>
+            <span className="hover:text-[#ffcb77] font-semibold mx-4 text-xl flex items-center cursor-pointer">
+              <Link className="pr-2" onClick={handlewindow}>
+                {user.username}
+              </Link>
+              <img className="h-10 inline" src="src\assets\images\User.png" />
+            </span>
+            <span>
+              <Button3 disabled={false} onClick={handleLogout}>
+                Salir
+              </Button3>
+            </span>
+          </>
+        )}
 
-        {!user && (<Button3 disabled={false} >
-          <Link to={LOGIN_PAGE} className="pr-2" onClick={handlewindow}>
-            Iniciar Sesión
-          </Link>
-        </Button3>)}
+        {!user && (
+          <Button3 disabled={false}>
+            <Link to={LOGIN_PAGE} className="pr-2" onClick={handlewindow}>
+              Iniciar Sesión
+            </Link>
+          </Button3>
+        )}
       </ul>
     </nav>
   );

@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path={LOGIN_PAGE} element={<LoginPage />} />
         <Route element={<Layout />}>
           <Route path={HOME_PAGE} element={<HomePage />} />
-          <Route path={MOVIE_DETAIL} element={<MovieDetailPage/>}/>
+          <Route path="/movie/:movie_id" element={<MovieDetailPage/>}/>
           <Route path="*" element="404 NOT FOUND" />
         </Route>
       </Routes>
