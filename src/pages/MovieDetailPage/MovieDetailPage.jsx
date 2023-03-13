@@ -51,9 +51,9 @@ export function MovieDetailPage() {
               <h2 className="text-xl font-semibold">Géneros:</h2>
               <br />
               <div>
-                 {genres.map((genre) => {
+                 {/* {genres.map((genre) => {
                   return <h1>{genre.name}</h1>;
-                })}  
+                })}   */}
                 
               </div>
             </div>
@@ -75,9 +75,9 @@ export function MovieDetailPage() {
             <div className="ml-20 my-10">
               <h1 className="text-xl font-semibold mb-5">COMPAÑIAS:</h1>
               <div>
-                {production_companies.map((company) => {
+                {/* {production_companies.map((company) => {
                   return <h1>{company.name}</h1>;
-                })}  
+                })}   */}
               </div>
             </div>
           </div>
