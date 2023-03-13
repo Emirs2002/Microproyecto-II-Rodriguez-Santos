@@ -8,6 +8,8 @@ export const signInWithGoogle = async () => {
         console.log(result)
     } catch (error) {
         console.error(error);
+        alert('No se pudo crear la cuenta, intentalo otra vez.')
+        navigate('/')
     }
 };
 
@@ -20,6 +22,8 @@ export const registerInWithEmailAndPassword = async ( email, password, extraData
         })
     } catch (error) {
         console.log(error)
+        alert('No se pudo crear la cuenta, intentalo otra vez.')
+        navigate('/')
     }
 };
 
