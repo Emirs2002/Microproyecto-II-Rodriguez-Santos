@@ -1,7 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { REGISTER_PAGE, LOGIN_PAGE } from "../../constants/url";
+import { useUser } from "../../contexts/UserContext";
+import { Button2, Button1 } from "../Button/Button";
+import { logout } from "../../firebase/auth-service";
 
 export function Navbar() {
+  const { user } = useUser()
+
+  const handleLogout = async () => {
+    await logout(() => navigate(REGISTER_PAGE));
+  };
+
+
   //Cambiar el icono del menu y activar el menu responsive
   const menu = (event) => {
     let list = document.querySelector("ul");
@@ -27,7 +38,7 @@ export function Navbar() {
   };
 
   return (
-    <nav className="p-5 bg-[#227c9d] md:flex md:items-center md:justify-between">
+    <nav className="p-5 bg-[#108c80] md:flex md:items-center md:justify-between">
       <div className="flex justify-between items-center">
         <span className="cursor-pointer">
           <Link
@@ -50,7 +61,7 @@ export function Navbar() {
 
       <ul
         className="text-[#FEF9EF] md:flex md:items-center md:z-auto md:static absolute
-       bg-[#227c9d] w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl7
+       bg-[#108c80] w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl7
        md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-400"
       >
         <li className=" font-semibold hover:text-[#ffcb77] mx-4  my-6 md:my-0 ">
@@ -62,12 +73,25 @@ export function Navbar() {
             Cartelera
           </Link>
         </li>
-        <span className="hover:text-[#ffcb77] font-semibold mx-4 text-xl flex items-center cursor-pointer">
-          <Link  className="pr-2" onClick={handlewindow}>
-            Nombre Usuario
+
+        {!!user && (<><span className="hover:text-[#ffcb77] font-semibold mx-4 text-xl flex items-center cursor-pointer">
+          <Link className="pr-2" onClick={handlewindow}>
+            {user.username}
           </Link>
           <img className="h-10 inline" src="src\assets\images\User.png" />
         </span>
+          <span>
+            <Button2 disabled={false} onClick={handleLogout}>
+              Salir
+            </Button2>
+          </span>
+        </>)}
+
+        {!user && (<Button2 disabled={false} >
+          <Link to={LOGIN_PAGE} className="pr-2" onClick={handlewindow}>
+            Iniciar Sesión
+          </Link>
+        </Button2>)}
       </ul>
     </nav>
   );
