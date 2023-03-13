@@ -6,8 +6,8 @@ import { HomePage } from "./pages/HomePage/HomePage";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage/RegisterPage";
 import { Layout } from "./components/Layout/Layout";
-import { LOGIN_PAGE, REGISTER_PAGE, HOME_PAGE, NOTUSER_PAGE } from "./constants/url";
-import { NotUserPage } from "./pages/NotUserPage/NotUserPage";
+import { LOGIN_PAGE, REGISTER_PAGE, HOME_PAGE, MOVIE_DETAIL } from "./constants/url";
+import { MovieDetailPage } from "./pages/MovieDetailPage/MovieDetailPage";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -18,6 +18,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route element={<Layout />}>
           <Route path={NOTUSER_PAGE} element={<NotUserPage />} />
           <Route path={HOME_PAGE} element={<HomePage />} />
+          <Route path="/movie/:movie_id" element={<MovieDetailPage/>}/>
           <Route path="*" element="404 NOT FOUND" />
         </Route>
       </Routes>
